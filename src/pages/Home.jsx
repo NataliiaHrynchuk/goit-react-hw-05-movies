@@ -3,7 +3,7 @@ import { MovieList } from 'components/MovieList';
 import * as API from 'services/api';
 
 
-export default function Home() {
+const Home = () => {
     const [movies, setMovies] = useState([]);
     
     useEffect(() => {
@@ -39,3 +39,5 @@ export default function Home() {
         </main>
     )
 };
+
+export default Home;
