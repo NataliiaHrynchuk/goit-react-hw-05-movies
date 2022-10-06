@@ -1,9 +1,9 @@
-import SearchForm from '../components/SearchForm';
+import SearchForm from '../components/SearchForm/SearchForm';
 import { useEffect, useState } from 'react';
 import { MovieList } from 'components/MovieList';
 import * as API from '../services/api';
 
-export const Movies = () => {
+const Movies = () => {
     const [movieName, setMovieName] = useState('');
     const [movies, setMovies] = useState([]);
     
@@ -45,3 +45,5 @@ export const Movies = () => {
         </main>
     )
 };
+
+export default Movies;
