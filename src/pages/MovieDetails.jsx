@@ -16,7 +16,7 @@ export default function MovieDetails() {
     const [status, setStatus] = useState('idle');
     const [error, setError] = useState(null);
     const location = useLocation();
-    const backLinkHref = location.state?.from ?? "/movies";
+    const backLinkHref = location?.state?.from ?? "/movies";
     
 
     useEffect(() => {
@@ -52,7 +52,7 @@ export default function MovieDetails() {
                         )}
                     
                         <div>
-                            <h2>{movie.title}</h2>
+                            <h2>{movie.title || movie.name}</h2>
                             <p>User Score: {Math.round(movie.vote_average * 10)}%</p>
                             <h3>Overview</h3>
                             <p>{movie.overview}</p>
