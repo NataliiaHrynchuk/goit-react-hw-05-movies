@@ -9,7 +9,7 @@ export const Header = styled.header`
     padding: 8px 0;
     margin-bottom: 16px;
     box-shadow: 3px 15px 10px -9px rgba(0,0,0,0.75);
-    /* border-bottom: 1px solid gray; */
+    border-bottom: 1px solid gray;
 
     > nav {
     display: flex;
