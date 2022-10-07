@@ -34,5 +34,14 @@ export async function getMovieById(movieId) {
     } catch (error) {
         new Error(`There is no movie`);
     }
+};
+
+export async function getCast(movieId) {
+    try {
+        const response = await axios.get(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`);
+        return response.data;
+    } catch (error) {
+        new Error(`There is no movie`);
+    }
 }
 
