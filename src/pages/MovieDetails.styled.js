@@ -5,11 +5,15 @@ export const Box = styled.div`
     display: flex;
     gap: 12px;
     padding: 12px;
+    border-bottom: solid 1px grey;
+    box-shadow: 0px 3px 3px -3px rgba(0,0,0,0.55);
 `;
 
 export const Wrap = styled.div`
     border-bottom: gray;
     padding: 12px;
+    border-bottom: solid 1px grey;
+    box-shadow: 0px 3px 3px -3px rgba(0,0,0,0.55);
 `;
 
 export const Link = styled(NavLink)`
