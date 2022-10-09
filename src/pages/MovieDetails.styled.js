@@ -31,3 +31,9 @@ export const Link = styled(NavLink)`
         text-decoration: underline;
     }
 `;
+
+export const DetailsList = styled.ul`
+display: flex;
+flex-direction: column; 
+gap: 20px;
+`;
