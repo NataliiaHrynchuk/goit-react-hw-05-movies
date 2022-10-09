@@ -62,14 +62,14 @@ export default function MovieDetails() {
                     </SC.Box>
                     <SC.Wrap>
                         <p>Additional information</p>
-                        <ul>
+                        <SC.DetailsList>
                             <li>
                                 <SC.Link to="cast" state={{from: location}}>Cast</SC.Link>
                             </li>
                             <li>
                                 <SC.Link to="reviews" state={{from: location}}>Reviews</SC.Link>
                             </li>
-                        </ul>
+                        </SC.DetailsList>
                         <Suspense fallback={<div>Loading...</div>}>
                             <Outlet/>
                         </Suspense>
