@@ -1,14 +1,15 @@
 import axios from 'axios';
 const API_KEY = '6860d409037e6854532ae07af7af1d83';
 const BASE_URL = 'https://api.themoviedb.org/3';
+const IMG_URL = 'https://image.tmdb.org/t/p/w200';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 axios.defaults.params = {
     api_key: '2123fea73978ac77fe6a3f347cf7ced6',
     include_adult: false,
 };
-const IMG_URL = 'https://image.tmdb.org/t/p/w200';
-const defaultImg = 'http://placehold.it/100x200'
+
+
 
 export async function getTradingMovies() {
     try {
@@ -70,12 +71,7 @@ export const getCast = movieId => {
     return axios
         .get(`/movie/${movieId}/credits?`)
         .then(({data: {cast}}) =>
-        cast.map(({ id, name, character, profile_path: photo}) => ({
-            id,
-            name, 
-            character,
-            photo: photo ? IMG_URL + photo : defaultImg,
-        }))
+        cast
         )
         .catch (error => {
             console.log(error.message);
@@ -86,16 +82,13 @@ export const getReviews = movieId => {
     return axios
     .get(`/movie/${movieId}/reviews?`)
     .then (({data: {results}}) => 
-    results.map(({id, author, content}) => ({
-        id,
-        author, 
-        content,
-    }))
+    results
     )   
     .catch (error => {
         console.log(error.message);
     });
 };
+
 
 
 
