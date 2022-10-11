@@ -9,7 +9,12 @@ const Reviews = () => {
     useEffect(() => {
         API
             .getReviews(movieId)
-            .then(setReviews); 
+            .then(results => 
+                setReviews(results.map(({id, author, content}) => ({
+                        id,
+                        author, 
+                        content,
+                    })))); 
     }, [movieId]);
 
     return (
