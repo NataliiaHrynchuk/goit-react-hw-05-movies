@@ -1,8 +1,10 @@
 import SearchForm from '../components/SearchForm/SearchForm';
 import { useEffect, useState } from 'react';
-import { MovieList } from 'components/MovieList';
+import { MovieList } from 'components/MovieList/MovieList';
 import { useSearchParams } from 'react-router-dom';
 import * as API from '../services/api';
+
+const IMG_URL = 'https://image.tmdb.org/t/p/w200';
 
 const Movies = () => {
     const [movies, setMovies] = useState([]);
@@ -20,23 +22,22 @@ const Movies = () => {
         }
         API
             .getMoviesByName(query)
-            .then((data) => {
-                const receivedMovies = data.results.map(
+            .then((results) => setMovies(results.map(
                     ({ id,
                         title,
                         name,
+                        poster_path: poster,
                     }) => {
                         return {
                             id,
                             title,
                             name,
-                        };
-                    }
-                );
-                console.log(receivedMovies);
-                setMovies([...receivedMovies]);
-            })
+                            poster: IMG_URL + poster,
+                        };}
+                    
+                )));
     }, [query]);
+
     return (
         <main>
             <SearchForm onSubmit={handleFormSubmit} />
