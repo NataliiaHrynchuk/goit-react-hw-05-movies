@@ -8,6 +8,7 @@ export const Header = styled.header`
     gap: 12px;
     padding: 8px 0;
     margin-bottom: 16px;
+    background-color: #dec1e3;
     box-shadow: 3px 15px 10px -9px rgba(0,0,0,0.75);
     border-bottom: 1px solid gray;
 
@@ -20,13 +21,15 @@ export const Link = styled(NavLink)`
     border-radius: 4px;
     text-decoration: none;
     color: black;
-    font-weight: 500;
+    font-weight: 800;
+    transition-duration: 300ms;
 
     &.active {
     color: #C71585;
     }
 
-    :hover {
-        text-decoration: underline;
+    &:hover {
+        /* text-decoration: underline; */
+        transform: scale(1.03);
     }
 `;
