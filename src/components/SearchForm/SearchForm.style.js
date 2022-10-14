@@ -23,8 +23,10 @@ export const SearchFormBtn = styled.button`
     cursor: pointer;
     outline: none;
     border: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
     color: black;
-    background-color: #c6bacb;
+    background-color: #dec1e3;
     :hover, :focus {
         color: white;
         background-color:#c71585;
@@ -41,15 +43,10 @@ box-sizing: border-box;
     font: inherit;
     font-size: 16px;
     vertical-align: middle;
-    /* border: solid 1px #c71585; */
     border: none;
     outline: none;
     padding: 4px;
-    /* padding-left: 4px;
-    padding-right: 4px; */
-    /* :focus {
-        border: solid 1px #139cd1;
-    } */
+    
     ::placeholder {
         font: inherit;
         font-size: 18px;
