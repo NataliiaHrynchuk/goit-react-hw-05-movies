@@ -11,7 +11,7 @@ text-decoration: none;
 border: 1px solid black;
 border-radius: 4px;
 color: black;
-background-color: #c6bacb;
+background-color: #dec1e3;
 
 :hover, :focus {
     color: white;
