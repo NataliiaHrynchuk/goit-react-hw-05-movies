@@ -9,7 +9,7 @@ const Home = lazy(() =>
   import('../pages/Home/Home')
 );
 const Movies = lazy(() =>
-  import('../pages/Movies')
+  import('../pages/Movies/Movies')
 );
 const Cast = lazy(() =>
   import('./MoreDetails/Cast')
