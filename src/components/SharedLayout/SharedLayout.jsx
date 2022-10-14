@@ -4,7 +4,7 @@ import * as SC from './SharedLayout.styled';
 
 export const SharedLayout = () => {
     return (
-        <>
+        <SC.Section>
             <SC.Header>
                 <nav>
                     <SC.Link to="/" end>Home</SC.Link>
@@ -15,7 +15,7 @@ export const SharedLayout = () => {
                 <Outlet/>
             </Suspense>
             
-        </>
+        </SC.Section>
         
     )
 }
