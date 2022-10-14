@@ -1,15 +1,25 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+export const Section = styled.section`
+display: flex;
+flex-direction: column;
+align-items: center;
+padding-top: 4px;
+background-color: #eae2eb;
+`;
+
 export const Header = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    min-width: 800px;
+    max-width: 1200px;
     padding: 8px 0;
-    margin-bottom: 16px;
     background-color: #dec1e3;
-    box-shadow: 3px 15px 10px -9px rgba(0,0,0,0.75);
+    border-radius: 4px;
+    box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.75);
     border-bottom: 1px solid gray;
 
     > nav {
@@ -29,7 +39,6 @@ export const Link = styled(NavLink)`
     }
 
     &:hover {
-        /* text-decoration: underline; */
         transform: scale(1.03);
     }
 `;
