@@ -5,13 +5,16 @@ export const SearchForm = styled.form`
     margin-left: auto;
     margin-right: auto;
     align-items: center;
-    width: 400px;
+    width: 100%;
     height: 32px;
     max-width: 600px;
     background-color: #fff;
     border: solid 1px #c71585;
     border-radius: 4px;
     overflow: hidden;
+    @media screen and (min-width: 768px){
+        min-width: 600px;
+    }
 `;
 
 export const SearchFormBtn = styled.button`
