@@ -7,8 +7,6 @@ import noResults from 'components/images/clipart2883707.png';
 import * as SC from './Movies.styled';
 import * as API from '../../services/api';
 
-const IMG_URL = 'https://image.tmdb.org/t/p/w200';
-
 const Movies = () => {
     const [movies, setMovies] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -24,20 +22,7 @@ const Movies = () => {
         }
         API
             .getMoviesByName(query)
-            .then((results) => setMovies(results.map(
-                    ({ id,
-                        title,
-                        name,
-                        poster_path: poster,
-                    }) => {
-                        return {
-                            id,
-                            title,
-                            name,
-                            poster: IMG_URL + poster,
-                        };}
-                    
-                )));
+            .then(setMovies)
     }, [query]);
 
     return (
