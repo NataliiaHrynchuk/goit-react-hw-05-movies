@@ -13,7 +13,7 @@ export const getTradingMovies = () => {
     .then(({data: {results}}) => 
     results)
     . catch (error => {
-       console.log(error.message);
+        console.log(error.message);
     });
 };
 
@@ -23,7 +23,7 @@ export const getMoviesByName = query => {
     .then(({data: {results}}) => 
     results)
     . catch (error => {
-       console.log(error.message);
+        console.log(error.message);
     });
 };
 
