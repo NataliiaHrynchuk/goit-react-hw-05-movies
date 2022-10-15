@@ -31,28 +31,28 @@ export default function MovieDetails() {
         <div>
             
         {movie &&
-                <>
+                <SC.Box>
                 <BackLink to={backLinkHref}>Go back</BackLink>
-                    <SC.Box>
+                    <SC.Container>
                         {poster ? (
-                        <img src={poster}
+                        <SC.Poster src={poster}
                             alt='movie cover' />
                         ) : (
-                            <img src = {dafaultURL}
+                            <SC.Poster src = {dafaultURL}
                             alt='movie cover' width="200px" />    
                         )}
                     
-                        <div>
-                            <h2>{title || name}({releaseYear})</h2>
-                            <p>User Score: {userScore}%</p>
-                            <h3>Overview</h3>
-                            <p>{overview}</p>
-                            <h4>Genres</h4>
-                            <p>{genres.map(genre => genre.name).join(', ')}</p>
-                        </div>
-                    </SC.Box>
+                        <SC.Wrap>
+                            <SC.BigTitle>{title || name}({releaseYear})</SC.BigTitle>
+                            <SC.Text>User Score: {userScore}%</SC.Text>
+                            <SC.MiddleTitle>Overview</SC.MiddleTitle>
+                            <SC.Text>{overview}</SC.Text>
+                            <SC.SmallTitle>Genres</SC.SmallTitle>
+                            <SC.Text>{genres.map(genre => genre.name).join(', ')}</SC.Text>
+                        </SC.Wrap>
+                    </SC.Container>
                     <SC.Wrap>
-                        <p>Additional information</p>
+                        <SC.Text>Additional information</SC.Text>
                         <SC.DetailsList>
                             <li>
                                 <SC.Link to="cast" state={{from: location}}>Cast</SC.Link>
@@ -65,7 +65,7 @@ export default function MovieDetails() {
                             <Outlet/>
                         </Suspense>
                     </SC.Wrap>
-                </>
+                </SC.Box>
         }
     </div>
     )
