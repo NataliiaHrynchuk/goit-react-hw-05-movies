@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const BackLink = styled(Link)`
-margin-left: 12px;
+width: 100px;
+margin-left: auto;
+margin-right: auto;
 padding: 4px;
 display: inline-flex;
 align-items: center;
@@ -16,5 +18,9 @@ background-color: #dec1e3;
 :hover, :focus {
     color: white;
     background-color:#c71585;
+}
+
+@media screen and (min-width: 1200px) {
+    margin-left: 16px;
 }
 `;
