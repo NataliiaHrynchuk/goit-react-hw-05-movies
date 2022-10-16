@@ -15,7 +15,7 @@ export default function MovieDetails() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
     const location = useLocation();
-    const backLinkHref = location?.state?.from ?? "/movies";
+    const backLinkHref = location?.state?.from ?? "/home";
 
     const { 
         poster_path: poster, 
