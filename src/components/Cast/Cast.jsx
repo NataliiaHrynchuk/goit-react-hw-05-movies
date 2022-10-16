@@ -31,9 +31,14 @@ const Cast = () => {
                 {cast.map(({id, name, character, photo }) => {
                     return (
                         <SC.CastItem key={id}>
-                        <img src={photo} alt="actor"></img>
-                        <SC.Name>{name}</SC.Name>
-                        {character && <SC.Character>Character: {character }</SC.Character>}
+                            <img src={photo} alt="actor" />
+                            <SC.Wrap>
+                                <SC.Name>{name}</SC.Name>
+                            {character &&
+                                <SC.Character>Character: {character}</SC.Character>
+                            }
+                            </SC.Wrap>
+                        
                     </SC.CastItem>
                     )
                 })}
