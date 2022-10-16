@@ -60,7 +60,7 @@ export const Poster = styled.img`
 `;
 
 export const MiddleTitle = styled.h3`
-    padding: 12px 0;
+    padding: 12px 4px;
     @media screen and (min-width: 1200px) {
         font-size: 24px;
     }
