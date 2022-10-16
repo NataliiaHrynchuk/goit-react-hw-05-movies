@@ -2,6 +2,8 @@ import { useParams, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { BackLink } from '../../components/BackLink/BackLink';
 import { Suspense } from 'react';
+import { NoResults } from 'components/NoResults/NoResults';
+import noResults from 'components/images/clipart2883707.png';
 import * as API from '../../services/api';
 import * as SC from './MovieDetails.styled';
 
@@ -38,7 +40,7 @@ export default function MovieDetails() {
     return (
         <div>
             
-        {movie &&
+        {movie ? (
                 <SC.Box>
                 <BackLink to={backLinkHref}>Go back</BackLink>
                     <SC.Container>
@@ -74,6 +76,9 @@ export default function MovieDetails() {
                         </Suspense>
                     </SC.Wrap>
                 </SC.Box>
+            ) : (
+                    <NoResults children={noResults}/>
+        )
         }
     </div>
     )
