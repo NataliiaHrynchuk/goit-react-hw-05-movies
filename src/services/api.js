@@ -6,78 +6,60 @@ axios.defaults.params = {
     include_adult: false,
 };
 
-const IMG_URL = 'https://image.tmdb.org/t/p/w200';
-
 export const getTradingMovies = () => {
-    return axios.get(`/trending/all/day?`)
-    .then(({data: {results}}) => 
-    results)
-    . catch (error => {
-        console.log(error.message);
-    });
+    try {
+        return axios
+        .get(`/trending/all/day?`)
+        .then(({data: {results}}) => 
+        results)
+    } catch (error) {
+        console.log('error', {error});
+        return null;
+    };
 };
 
 export const getMoviesByName = query => {
-    return axios
-    .get(`/search/movie?query=${query}`)
-    .then(({data: {results}}) => 
-    results)
-    . catch (error => {
-        console.log(error.message);
-    });
+    try{
+        return axios
+        .get(`/search/movie?query=${query}`)
+        .then(({data: {results}}) => 
+        results)
+    } catch (error) {
+        console.log('error', {error});
+        return null;
+    };
 };
 
 export const getMovieById = movieId => {
-    return axios
-    .get(`/movie/${movieId}?`)
-    .then(
-        ({
-            data:{
-                id, 
-                poster_path: poster,
-                title,
-                name,
-                release_date: releaseYear,
-                vote_average: userScore,
-                overview,
-                genres,
-            },
-        }) => ({
-            id,
-            poster: IMG_URL + poster,
-            title,
-            name,
-            releaseYear: new Date(releaseYear).getFullYear(),
-            userScore: Math.round(userScore * 10),
-            overview,
-            genres,
-        })
-    )
-    .catch (error => {
-        console.log(error.message);
-    });
+    try {
+        return axios
+        .get(`/movie/${movieId}?`)
+        .then(({data}) => data)
+    } catch (error) {
+        console.log('error', {error});
+        return null;
+    };
 };
 
+
 export const getCast = movieId => {
-    return axios
+    try {
+        return axios
         .get(`/movie/${movieId}/credits?`)
-        .then(({data: {cast}}) =>
-        cast
-        )
-        .catch (error => {
-            console.log(error.message);
-        })
+        .then(({data: {cast}}) => cast)
+    } catch (error) {
+            console.log('error', {error});
+        }
 };
 
 export const getReviews = movieId => {
-    return axios
-    .get(`/movie/${movieId}/reviews?`)
-    .then (({data: {results}}) => 
-    results
-    )   
-    .catch (error => {
-        console.log(error.message);
-    });
+    try {
+        return axios
+        .get(`/movie/${movieId}/reviews?`)
+        .then (({data: {results}}) => results)
+    } catch (error) {
+        console.log('error', {error});
+    };
 };
 
 
