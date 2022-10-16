@@ -7,6 +7,7 @@ import * as SC from './MovieDetails.styled';
 
 
 const dafaultURL = 'https://i.ibb.co/BrYLsTv/default-movie-poster-min.jpg';
+const IMG_URL = 'https://image.tmdb.org/t/p/w200';
 
 export default function MovieDetails() { 
     const { movieId } = useParams();
@@ -14,8 +15,15 @@ export default function MovieDetails() {
     const location = useLocation();
     const backLinkHref = location?.state?.from ?? "/movies";
 
-    const { poster, title, name, releaseYear, userScore, overview, genres } =
-    movie ?? {};
+    const { 
+        poster_path: poster, 
+        title, 
+        name, 
+        release_date: releaseYear, 
+        vote_average: userScore,
+        overview, 
+        genres 
+    } = movie ?? {};
     
 
     useEffect(() => {
@@ -35,7 +43,7 @@ export default function MovieDetails() {
                 <BackLink to={backLinkHref}>Go back</BackLink>
                     <SC.Container>
                         {poster ? (
-                        <SC.Poster src={poster}
+                        <SC.Poster src={IMG_URL + poster}
                             alt='movie cover' />
                         ) : (
                             <SC.Poster src = {dafaultURL}
@@ -43,8 +51,8 @@ export default function MovieDetails() {
                         )}
                     
                         <SC.Wrap>
-                            <SC.BigTitle>{title || name}({releaseYear})</SC.BigTitle>
-                            <SC.Text>User Score: {userScore}%</SC.Text>
+                            <SC.BigTitle>{title || name}({new Date(releaseYear).getFullYear()})</SC.BigTitle>
+                            <SC.Text>User Score: {Math.round(userScore * 10)}%</SC.Text>
                             <SC.MiddleTitle>Overview</SC.MiddleTitle>
                             <SC.Text>{overview}</SC.Text>
                             <SC.SmallTitle>Genres</SC.SmallTitle>
