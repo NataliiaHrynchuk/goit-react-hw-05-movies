@@ -1,4 +1,5 @@
 import * as API from '../../services/api';
+import * as SC from './Reviews.styled';
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
@@ -20,14 +21,14 @@ const Reviews = () => {
     return (
         <div>
             {reviews.length > 0 ? (
-                <ul>
+                <SC.ReviewsList>
                 {reviews.map(({id, author, content}) => (
                     <li key={id}>
                         <h3>{author}</h3>
                         <p>{content}</p>
                     </li>
                 ))}
-                </ul>
+                </SC.ReviewsList>
             ) : (
                 <p>We don`t have any reviews for this movie</p>
             )}
