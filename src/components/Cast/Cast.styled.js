@@ -11,6 +11,7 @@ export const CastList = styled.ul`
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
+        gap: 24px;
     }
 `;
 
@@ -25,11 +26,11 @@ export const CastItem = styled.li`
     0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
     border-radius: 5px;
     @media screen and (min-width: 768px){
-        width: 200px;
+        max-width: 200px;
     }
 
     @media screen and (min-width: 768px){
-        width: 300px;
+        max-width: 300px;
     }
 `;
 
