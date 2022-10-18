@@ -14,6 +14,8 @@ const Home = () => {
             .then(setMovies)
     }, []);
 
+    // console.log(location);
+
     return (
         <main>
             <SC.Title>Trending today</SC.Title>
