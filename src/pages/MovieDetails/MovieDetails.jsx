@@ -36,6 +36,8 @@ export default function MovieDetails() {
             .getMovieById(movieId)
             .then(setMovie)
     }, [movieId]);
+
+    // console.log(location);
     
     return (
         <div>
@@ -65,10 +67,10 @@ export default function MovieDetails() {
                         <SC.Text>Additional information</SC.Text>
                         <SC.DetailsList>
                             <li>
-                                <SC.Link to="cast" state={{from: location}}>Cast</SC.Link>
+                                <SC.Link to="cast" state={{from: location.state.from}}>Cast</SC.Link>
                             </li>
                             <li>
-                                <SC.Link to="reviews" state={{from: location}}>Reviews</SC.Link>
+                                <SC.Link to="reviews" state={{from: location.state.from}}>Reviews</SC.Link>
                             </li>
                         </SC.DetailsList>
                         <Suspense fallback={<div>Loading...</div>}>
