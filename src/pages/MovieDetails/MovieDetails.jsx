@@ -79,7 +79,7 @@ export default function MovieDetails() {
                     </SC.Wrap>
                 </SC.Box>
             ) : (
-                    <NoResults children={noResults}/>
+                    <NoResults imageUrl={noResults}/>
         )
         }
     </div>

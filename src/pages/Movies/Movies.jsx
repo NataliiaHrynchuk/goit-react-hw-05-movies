@@ -27,7 +27,7 @@ const Movies = () => {
             .then(setMovies)
     }, [query]);
 
-    console.log(location);
+    // console.log(location);
 
     return (
         <SC.Section>
@@ -35,7 +35,7 @@ const Movies = () => {
             {movies &&  ((movies.length > 0) ? (
                 <MovieList movies={movies} location={location}/>
             ) : (
-                <NoResults children={noResults} location={location}/>
+                <NoResults imageUrl={noResults} location={location}/>
             ))
             }
         </SC.Section>

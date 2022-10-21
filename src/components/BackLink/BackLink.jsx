@@ -1,4 +1,5 @@
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import PropTypes from 'prop-types';
 import * as SC from './BackLink.styled';
 
 export const BackLink = ({to, children}) => {
@@ -9,4 +10,9 @@ export const BackLink = ({to, children}) => {
             {children}
         </SC.BackLink>
     );
+};
+
+BackLink.propTypes = {
+    to: PropTypes.object.isRequired,
+    children: PropTypes.string.isRequired,
 };

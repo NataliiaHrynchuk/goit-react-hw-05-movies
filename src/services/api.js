@@ -18,9 +18,9 @@ export const getTradingMovies = () => {
     };
 };
 
-export const getMoviesByName = query => {
+export async function getMoviesByName (query) {
     try{
-        return axios
+        return await axios
         .get(`/search/movie?query=${query}`)
         .then(({data: {results}}) => 
         results)
@@ -51,6 +51,8 @@ export const getCast = movieId => {
             console.log('error', {error});
         }
 };
+
+
 
 export const getReviews = movieId => {
     try {

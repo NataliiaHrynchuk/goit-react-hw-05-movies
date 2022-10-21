@@ -1,29 +1,42 @@
+import {useState} from 'react';
+import PropTypes from 'prop-types';
 import React from "react";
 import * as SC from './SearchForm.style';
 
-export default function SearchForm({ onSubmit }) {            
+export default function SearchForm({ onSubmit }) {  
+    const [query, setQuery] = useState('');
+
+    const handleChangeQuery = event => {
+        setQuery(event.currentTarget.value.toLowerCase());
+    };
+
     const handleSubmit = event => {
         event.preventDefault();
         
-        if (!event.currentTarget.elements.query.value) {
-            alert('Enter movies name');
+        if (query.trim() === '' ) {
+            alert('Enter the name of the movie');
         return;
         }
-        onSubmit(event.currentTarget.elements.query.value);
-        event.currentTarget.reset();
+        onSubmit(query);
+        setQuery('');
     };
 
     return (
         <SC.SearchForm onSubmit={handleSubmit}>
             <SC.SearchFormInput
                 type="text"
-                name="query"
+                value={query}
                 autoFocus
-                utocomplete="off"
+                placeholder="Enter the name of the movie"
+                onChange={handleChangeQuery}
             />
             <SC.SearchFormBtn type="submit">
                 Search
             </SC.SearchFormBtn>
     </SC.SearchForm>
     )
+};
+
+SearchForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
 };

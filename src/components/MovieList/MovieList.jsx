@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import * as SC from './MovieList.styled';
 import noResults from 'components/images/clipart2883707.png';
 
@@ -24,4 +25,8 @@ export const MovieList = ({ movies }) => {
                 
         </SC.Box>
     )
+};
+
+MovieList.propTypes = {
+    movies: PropTypes.array.isRequired,
 }
