@@ -9,24 +9,34 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w200';
 const Cast = () => { 
     const { movieId } = useParams();
     const [cast, setCast] = useState([]);
+    const [isLoadingCast, setIsLoadingCast] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        API
-            .getCast(movieId)
-            .then(cast => 
-                setCast(cast.map(({ id, name, character, profile_path: photo}) => ({
+        const fetchCast = async () => {
+            try {
+                setIsLoadingCast(true);
+                const cast = await API.getCast(movieId);
+                setCast(cast.map(({ id, name, character, profile_path: photo }) => ({
                     id,
-                    name, 
+                    name,
                     character,
                     photo: photo ? IMG_URL + photo : defaultPhoto,
-                }))
-            ))
-                
+                })))
+            } catch {
+                setError(`A cast does not exist`);
+            } finally {
+                setIsLoadingCast(false);
+            }
+        };
+        fetchCast();                
     }, [movieId]);
 
     return (
         <div>
-            {cast.length > 0 && (
+            {error && <p>{error}</p>}
+            {isLoadingCast && <p>Loading...</p>}
+            {!isLoadingCast && cast.length > 0 && (
                 <SC.CastList>
                 {cast.map(({id, name, character, photo }) => {
                     return (
