@@ -21,26 +21,14 @@ export const getMovieById = async movieId => {
     return response.data;
 };
 
-export const getCast = movieId => {
-    try {
-        return axios
-        .get(`/movie/${movieId}/credits?`)
-        .then(({data: {cast}}) => cast)
-    } catch (error) {
-            console.log('error', {error});
-        }
+export const getCast = async movieId => {
+    const response = await axios.get(`/movie/${movieId}/credits?`);
+    return response.data.cast;
 };
 
-
-
-export const getReviews = movieId => {
-    try {
-        return axios
-        .get(`/movie/${movieId}/reviews?`)
-        .then (({data: {results}}) => results)
-    } catch (error) {
-        console.log('error', {error});
-    };
+export const getReviews = async movieId => {
+    const response = await axios.get(`/movie/${movieId}/reviews?`);
+    return response.data.results;
 };
 
 
