@@ -1,4 +1,4 @@
-  import SearchForm from '../../components/SearchForm/SearchForm';
+import SearchForm from '../../components/SearchForm/SearchForm';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MovieList } from 'components/MovieList/MovieList';
