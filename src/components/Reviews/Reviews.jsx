@@ -6,21 +6,33 @@ import { useState, useEffect } from 'react';
 const Reviews = () => {
     const { movieId } = useParams();
     const [reviews, setReviews] = useState([]);
+    const [isLoadingReviews, setIsLoadingReviews] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        API
-            .getReviews(movieId)
-            .then(results => 
-                setReviews(results.map(({id, author, content}) => ({
+        const fetchReviews = async () => {
+            try {
+                setIsLoadingReviews(true);
+                const reviews = await API.getReviews(movieId);
+                setReviews(reviews.map(({id, author, content}) => ({
                         id,
                         author, 
                         content,
-                    })))); 
+                    })))
+            } catch {
+                setError(`Reviews don't exist`);
+            } finally {
+                setIsLoadingReviews(false);
+            }
+        }
+        fetchReviews();
     }, [movieId]);
 
     return (
         <div>
-            {reviews.length > 0 ? (
+            {error && <p>{error}</p>}
+            {isLoadingReviews && <p>Loading...</p>}
+            {!isLoadingReviews && reviews.length > 0 ? (
                 <SC.ReviewsList>
                 {reviews.map(({id, author, content}) => (
                     <li key={id}>
