@@ -1,10 +1,11 @@
 import { useParams, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { BackLink } from '../../components/BackLink/BackLink';
+import { BackLink } from 'components/BackLink/BackLink';
+import { MovieSkeleton } from "components/MovieSkeleton";
 import { Suspense } from 'react';
 import { NoResults } from 'components/NoResults/NoResults';
 import noResults from 'components/images/clipart2883707.png';
-import * as API from '../../services/api';
+import * as API from 'services/api';
 import * as SC from './MovieDetails.styled';
 
 
@@ -13,7 +14,9 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w200';
 
 export default function MovieDetails() { 
     const { movieId } = useParams();
+    const [isLoadingMovie, setIsLoadingMovie] = useState(false);
     const [movie, setMovie] = useState(null);
+    const [error, setError] = useState(null);
     const location = useLocation();
     const backLinkHref = location?.state?.from ?? "/home";
 
@@ -27,24 +30,36 @@ export default function MovieDetails() {
         genres 
     } = movie ?? {};
     
-
     useEffect(() => {
         if (!movieId) {
             return;
-        }
-        API
-            .getMovieById(movieId)
-            .then(setMovie)
+        } const fetchMovieById = async () => {
+            try {
+                setIsLoadingMovie(true);
+                const movie = await API.getMovieById(movieId);
+                setMovie(movie);
+            } catch {
+                setError(`Such a movie does not exist`);
+            } finally {
+                setIsLoadingMovie(false);
+            }
+        };
+        fetchMovieById();        
     }, [movieId]);
-
-    // console.log(location);
     
     return (
         <div>
-            
-        {movie ? (
                 <SC.Box>
                 <BackLink to={backLinkHref}>Go back</BackLink>
+                {error &&(
+                    <>
+                        <NoResults imageUrl={noResults} />
+                        <p>{error}</p>
+                    </>)
+                }
+                {isLoadingMovie && <MovieSkeleton/>}
+                {movie && !isLoadingMovie && (
+                    <>
                     <SC.Container>
                         {poster ? (
                         <SC.Poster src={IMG_URL + poster}
@@ -77,11 +92,11 @@ export default function MovieDetails() {
                             <Outlet/>
                         </Suspense>
                     </SC.Wrap>
+                    </>
+                )
+                }
+                
                 </SC.Box>
-            ) : (
-                    <NoResults imageUrl={noResults}/>
-        )
-        }
     </div>
     )
 };
