@@ -48,6 +48,12 @@ export const StyledLink = styled(NavLink)`
     text-decoration: none;
     color: #C71585;
     font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media screen and (min-width: 768px){
+        min-height: 495.52px;
+    }
 `;
 
 export const Poster = styled.img`
